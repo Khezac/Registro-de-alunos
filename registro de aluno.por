@@ -119,7 +119,21 @@ programa
 			}
 			mediaPturma = mediaPalunos / alunos
 			mediaPturma = m.arredondar(mediaPturma,1)
-			escreva(mediaPturma+" ")			 		
+			escreva(mediaPturma+" \n")		
+
+		se(mediaPturma < 6){
+			escreva("Esta é uma média ruim")
+		}
+		se(mediaPturma >= 6 e mediaPturma < 8){
+			escreva("Esta dentro da média")
+		}
+		se(mediaPturma >= 8 e mediaPturma < 10){
+			escreva("Esta média é boa")
+		}
+		se(mediaPturma == 10){
+			escreva("Excelente média")
+		}
+		escreva("\n------------------------\n")
 		}
 	funcao inicio()
 	{
@@ -183,7 +197,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3527; 
+ * @POSICAO-CURSOR = 3110; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {aluno, 18, 29, 5};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
