@@ -15,8 +15,8 @@ programa
 			escreva("\n")
 	}
 
-			funcao cadastroAluno(cadeia aluno[][]){
-		
+	funcao cadastroAluno(cadeia aluno[][]){
+		caracter parar
 		inteiro linha = Util.numero_linhas(aluno)
 		para(inteiro i=0; i < linha; i++)
 		{
@@ -56,8 +56,7 @@ programa
 			media = m.arredondar(media,1)
 			
 			mediaFinal = t.real_para_cadeia(media)
-			escreva(mediaFinal + "\n")
-			
+						
 			aluno[i][6] = mediaFinal
 
 		se(media < 6){
@@ -67,16 +66,43 @@ programa
 			aluno[i][7] = "Aprovado"
 			
 		}
+		escreva("\nDeseja parar?(S ou N): ")
+		leia(parar)
+			
+			se(parar == 'S'ou parar == 's')
+			{
+				limpa()
+				pare
+			}
 		
 	     }
 			
 	}
-	
+	funcao exibirAlunos(cadeia aluno[][])
+	{	
+		inteiro linha = Util.numero_linhas(aluno)
+		inteiro coluna = Util.numero_colunas(aluno)
+		
+		para(inteiro i = 0;i<linha;i++)
+		{
+			//para(inteiro j = 0;j<coluna;j++)
+			//{
+				escreva("\nNome: "+aluno[i][0])
+				escreva("\nMes de Nascimento: "+aluno[i][1])
+				escreva("\nTurma: "+aluno[i][2])
+				escreva("\nNota 1: "+aluno[i][3])
+				escreva("\nNota 2: "+aluno[i][4])
+				escreva("\nNota 3: "+aluno[i][5])
+				escreva("\nMédia: "+aluno[i][6])
+				escreva("\nSituação: "+aluno[i][7])
+				escreva("\n")
+			//}
+		}
+	}
 	funcao inicio()
 	{
 		inteiro selecao
 		logico rodandoprograma = verdadeiro
-		cadeia nome = " "
 		const inteiro linha = 2, coluna = 8
 		cadeia alunos[linha][coluna]
 		
@@ -94,7 +120,7 @@ programa
 			caso 1:
 			limpa()
 			cadastroAluno(alunos)
-			leia(nome)
+			
 			pare
 
 			caso 2:
@@ -109,8 +135,8 @@ programa
 
 			caso 4:
 			limpa()
-			escreva("\n Exibição de alunos")
-			escreva(nome)
+			exibirAlunos(alunos)
+			
 			pare
 
 			caso 5:
@@ -132,9 +158,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1696; 
+ * @POSICAO-CURSOR = 387; 
+ * @DOBRAMENTO-CODIGO = [6, 17, 80];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {aluno, 18, 31, 5};
+ * @SIMBOLOS-INSPECIONADOS = {aluno, 18, 29, 5};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
