@@ -14,7 +14,7 @@ programa
 			escreva("\n [5] Finalizar")
 			escreva("\n")
 	}
-
+	
 	funcao cadastroAluno(cadeia aluno[][]){
 		caracter parar
 		inteiro linha = Util.numero_linhas(aluno)
@@ -96,9 +96,31 @@ programa
 				escreva("\nMédia: "+aluno[i][6])
 				escreva("\nSituação: "+aluno[i][7])
 				escreva("\n")
-			//}
+				escreva("------------------------")
+			//}	
 		}
+	
 	}
+	funcao mediaturma(cadeia aluno[][])
+	{	
+		inteiro linha = Util.numero_linhas(aluno)
+          cadeia turmaescolhida
+          inteiro alunos = 0
+          real mediaPalunos = 0.0 , mediaPturma = 0.0
+          
+		escreva("Escreva a turma que quer saber a média: ")
+		leia(turmaescolhida)
+		
+		para(inteiro i=0; i<linha; i++){
+			    se(aluno[i][2] == turmaescolhida){
+			    		alunos++
+			    		mediaPalunos += t.cadeia_para_real(aluno[i][6])
+			    	}	
+			}
+			mediaPturma = mediaPalunos / alunos
+			mediaPturma = m.arredondar(mediaPturma,1)
+			escreva(mediaPturma+" ")			 		
+		}
 	funcao inicio()
 	{
 		inteiro selecao
@@ -125,17 +147,20 @@ programa
 
 			caso 2:
 			limpa()
-			escreva("\n Média da Turma")
+			mediaturma(alunos)
 			pare
 
 			caso 3:
 			limpa()
-			escreva("\n Situação do Aluno")
+			escreva("\n Situação do Aluno\n")
+			
 			pare
 
 			caso 4:
 			limpa()
+			escreva("------------------------")
 			exibirAlunos(alunos)
+			escreva("-----------------")
 			
 			pare
 
@@ -146,7 +171,7 @@ programa
 
 			caso contrario:
 			limpa()
-			escreva("\n Opção Digitada Invalida \n")
+			escreva("\n Opção digitada inválida. \n")
 			
 		}
 		
@@ -158,8 +183,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 387; 
- * @DOBRAMENTO-CODIGO = [6, 17, 80];
+ * @POSICAO-CURSOR = 3527; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {aluno, 18, 29, 5};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
