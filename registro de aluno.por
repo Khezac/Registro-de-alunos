@@ -18,6 +18,51 @@ programa
 		escreva("\n------------------------\n")
 		escreva("Insira o numero da operação que deseja realizar: ")
 	}
+
+	funcao organizadorPorMediaCrescente(cadeia aluno[][]){
+		real mediaReal1 = 0.0, mediaReal2 = 0.0
+		cadeia matrizAux[LINHA][COLUNA]
+
+		para(inteiro i = 0; i < LINHA; i++){
+			mediaReal1 = t.cadeia_para_real(aluno[i][6])
+			se(aluno[i+1][6] != ""){
+				mediaReal2 = t.cadeia_para_real(aluno[i+1][6])
+			} senao {
+				retorne
+			}
+
+			se(mediaReal1 < mediaReal2){
+				matrizAux[i][0] = aluno[i][0]
+				matrizAux[i][1] = aluno[i][1]
+				matrizAux[i][2] = aluno[i][2]
+				matrizAux[i][3] = aluno[i][3]
+				matrizAux[i][4] = aluno[i][4]
+				matrizAux[i][5] = aluno[i][5]
+				matrizAux[i][6] = aluno[i][6]
+				matrizAux[i][7] = aluno[i][7]
+
+				aluno[i][0] = aluno[i+1][0]
+				aluno[i][1] = aluno[i+1][1]
+				aluno[i][2] = aluno[i+1][2]
+				aluno[i][3] = aluno[i+1][3]
+				aluno[i][4] = aluno[i+1][4]
+				aluno[i][5] = aluno[i+1][5]
+				aluno[i][6] = aluno[i+1][6]
+				aluno[i][7] = aluno[i+1][7]
+
+				aluno[i+1][0] = matrizAux[i][0]
+				aluno[i+1][1] = matrizAux[i][1]
+				aluno[i+1][2] = matrizAux[i][2]
+				aluno[i+1][3] = matrizAux[i][3]
+				aluno[i+1][4] = matrizAux[i][4]
+				aluno[i+1][5] = matrizAux[i][5]
+				aluno[i+1][6] = matrizAux[i][6]
+				aluno[i+1][7] = matrizAux[i][7]
+			} senao {
+				retorne
+			}
+		}
+	}
 	
 	funcao cadastroAluno(cadeia aluno[][])
 	{
@@ -136,7 +181,7 @@ programa
 		cadeia nomeAluno
 		escreva("Qual o nome do aluno que deseja saber a situação: ")
 		leia(nomeAluno)
-
+		
 		para(inteiro i = 0; i < LINHA; i++){
 			se(aluno[i][0] == nomeAluno){
 			escreva("\n------------------------")
@@ -184,6 +229,7 @@ programa
 			caso 1:
 			limpa()
 			cadastroAluno(alunos)
+			organizadorPorMediaCrescente(alunos)
 			pare
 
 			caso 2:
@@ -222,10 +268,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4250; 
- * @DOBRAMENTO-CODIGO = [8, 21, 100, 134];
+ * @POSICAO-CURSOR = 2714; 
+ * @DOBRAMENTO-CODIGO = [8, 21, 145, 199];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {aluno, 67, 29, 5}-{alunos, 220, 9, 6};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
