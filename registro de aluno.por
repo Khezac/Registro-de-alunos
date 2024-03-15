@@ -32,7 +32,6 @@ programa
 		{	
 			se(aluno[i][0] == "")
 			{
-				escreva(i)
 			escreva("-----------------------------------------")
 			escreva("\nCadastro de aluno: ")
 			escreva("\n-----------------------------------------")
