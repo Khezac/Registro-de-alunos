@@ -8,7 +8,7 @@ programa
 	
 	funcao menu()
 	{
-		escreva("\n------------------------")
+		escreva("-----------------------------------------")
 		escreva("\nRegistro de alunos no sistema educacional: ")
 		escreva("\n[1] Cadastro")
 		escreva("\n[2] Média da turma")
@@ -17,8 +17,8 @@ programa
 		escreva("\n[5] Editar Alunos")
 		escreva("\n[6] Mural de Aniversário")
 		escreva("\n[7] Finalizar")
-		escreva("\n------------------------\n")
-		escreva("Insira o numero da operação que deseja realizar: ")
+		escreva("\n-----------------------------------------")
+		escreva("\nInsira o numero da operação que deseja realizar: ")
 	}
 	
 	funcao cadastroAluno(cadeia aluno[][])
@@ -33,7 +33,7 @@ programa
 			se(aluno[i][0] == "")
 			{
 			escreva("\nCadastro de aluno: ")
-			escreva("\n------------------------")
+			escreva("\n-----------------------------------------")
 			escreva("\nNome: ")
 			leia(nome)
 			escreva("\nMês de Nascimento: ")
@@ -53,9 +53,9 @@ programa
 	
 				se(numeroErrado > 0){
 					limpa()
-					escreva("\n------------------------")
+					escreva("-----------------------------------------")
 					escreva("\nAlgo deu errado, notas inseridas inválidas!\nTente novamente!\n")
-					escreva("------------------------")
+					escreva("-----------------------------------------\n")
 				}
 				
 				nota1real = t.cadeia_para_real(nota1)
@@ -175,7 +175,7 @@ programa
 			}
 			mediaPturma = mediaPalunos / alunos
 			mediaPturma = m.arredondar(mediaPturma,1)
-			escreva("A média desta turma é: " + mediaPturma +" \n")		
+			escreva("A média da turma "+turmaescolhida+" é: " + mediaPturma +" \n")		
 
 		se(mediaPturma < 6){
 			escreva("Esta é uma média ruim")
@@ -189,17 +189,17 @@ programa
 		se(mediaPturma == 10){
 			escreva("Excelente média")
 		}
-		escreva("\n------------------------\n")
-		}
+	}
 
 	funcao situacaoAluno(cadeia aluno[][]){
 		cadeia nomeAluno
 		escreva("Qual o nome do aluno que deseja saber a situação: ")
 		leia(nomeAluno)
+		limpa()
 		
 		para(inteiro i = 0; i < LINHA; i++){
 			se(aluno[i][0] == nomeAluno){
-			escreva("\n------------------------")
+			escreva("---------------------------")
 			escreva("\nNome: "+aluno[i][0])
 			escreva("\nTurma: "+aluno[i][2])
 			escreva("\nNota 1: "+aluno[i][3])
@@ -207,7 +207,7 @@ programa
 			escreva("\nNota 3: "+aluno[i][5])
 			escreva("\nMédia: "+aluno[i][6])
 			escreva("\nSituação Final: "+aluno[i][7])
-			escreva("\n------------------------\n")
+			escreva("\n---------------------------\n")
 			}
 		}
 	}
@@ -288,6 +288,7 @@ programa
 		para(inteiro i = 0;i < LINHA ; i++)
 		{
 			se(aluno[i][0] != ""){
+		     escreva("\n-----------------------------------------\n")
 			escreva("\nNome: "+aluno[i][0])
 			escreva("\nMes de Nascimento: "+aluno[i][1])
 			escreva("\nTurma: "+aluno[i][2])
@@ -295,11 +296,32 @@ programa
 			escreva("\nNota 2: "+aluno[i][4])
 			escreva("\nNota 3: "+aluno[i][5])
 			escreva("\nMédia: "+aluno[i][6])
-			escreva("\nSituação Final: "+aluno[i][7])
-			escreva("\n------------------------")
+			escreva("\nSituação Final: "+aluno[i][7]+"\n")
 			}
 		}
 	}
+	funcao muralaniversario(cadeia aluno[][])
+	{
+		cadeia mesAtual
+		inteiro aniversarios = 0
+		
+		escreva("-----------------------------------------")
+		escreva("\nOlá, em qual mês estamos? ")
+		leia(mesAtual)
+		limpa()
+
+		escreva("O(s) Aniversariante(s) do mẽs de " +mesAtual+ " são:")
+	     
+		para(inteiro i = 0; i < LINHA ; i++)
+		{    se(aluno[i][1] == mesAtual){
+					escreva("\n"+aluno[i][0])
+					aniversarios = 1
+				}		
+	     }
+	     	      se(aniversarios < 1){    
+					escreva("\nNão há alunos fazendo aniversário neste mês...")
+					}
+	 }
 		
 	funcao inicio()
 	{
@@ -330,9 +352,7 @@ programa
 
 			caso 4:
 			limpa()
-			escreva("------------------------")
 			exibirAlunos(alunos)
-			escreva("-----------------")
 			pare
 
 			caso 5:
@@ -342,7 +362,7 @@ programa
 
 			caso 6:
 			limpa()
-			
+			muralaniversario(alunos)
 			pare
 			
 			caso 7:
@@ -364,10 +384,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 7412; 
- * @DOBRAMENTO-CODIGO = [8, 23, 105, 160, 194, 214, 285];
+ * @POSICAO-CURSOR = 5016; 
+ * @DOBRAMENTO-CODIGO = [23, 105, 160, 214];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {aluno, 106, 44, 5}-{alunos, 164, 18, 6};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
