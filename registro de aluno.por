@@ -4,7 +4,7 @@ programa
 	inclua biblioteca Tipos --> t
 	inclua biblioteca Util --> u
 
-	const inteiro LINHA = 6, COLUNA = 8
+	const inteiro LINHA = 3, COLUNA = 8
 	
 	funcao menu()
 	{
@@ -32,6 +32,7 @@ programa
 		{	
 			se(aluno[i][0] == "")
 			{
+				escreva(i)
 			escreva("-----------------------------------------")
 			escreva("\nCadastro de aluno: ")
 			escreva("\n-----------------------------------------")
@@ -148,7 +149,7 @@ programa
 		{	
 			para(inteiro i = 0; i < LINHA; i++){
 				mediaReal1 = t.cadeia_para_real(aluno[i][6])
-				se(aluno[i+1][6] != ""){
+				se(i+1 < LINHA){
 					mediaReal2 = t.cadeia_para_real(aluno[i+1][6])
 				} senao {
 					pare
@@ -186,7 +187,6 @@ programa
 			troca++
 		}
 	}
-
 
 	funcao mediaturma(cadeia aluno[][])
 	{	
@@ -481,10 +481,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 11010; 
+ * @POSICAO-CURSOR = 3936; 
  * @DOBRAMENTO-CODIGO = [8, 23, 190, 225, 245, 349, 367];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {alunos, 413, 9, 6};
+ * @SIMBOLOS-INSPECIONADOS = {aluno, 143, 42, 5}-{troca, 146, 10, 5}-{i, 150, 16, 1}-{alunos, 194, 18, 6}-{alunos, 413, 9, 6};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
