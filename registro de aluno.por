@@ -14,54 +14,11 @@ programa
 		escreva("\n[2] Média da turma")
 		escreva("\n[3] Situação do Aluno")
 		escreva("\n[4] Exibição de Alunos")
-		escreva("\n[5] Finalizar")
+		escreva("\n[5] Editar Alunos")
+		escreva("\n[6] Mural de Aniversário")
+		escreva("\n[7] Finalizar")
 		escreva("\n------------------------\n")
 		escreva("Insira o numero da operação que deseja realizar: ")
-	}
-
-	funcao organizadorPorMediaCrescente(cadeia aluno[][]){
-		real mediaReal1 = 0.0, mediaReal2 = 0.0
-		cadeia matrizAux[LINHA][COLUNA]
-
-		para(inteiro i = 0; i < LINHA; i++){
-			mediaReal1 = t.cadeia_para_real(aluno[i][6])
-			se(aluno[i+1][6] != ""){
-				mediaReal2 = t.cadeia_para_real(aluno[i+1][6])
-			} senao {
-				retorne
-			}
-
-			se(mediaReal1 < mediaReal2){
-				matrizAux[i][0] = aluno[i][0]
-				matrizAux[i][1] = aluno[i][1]
-				matrizAux[i][2] = aluno[i][2]
-				matrizAux[i][3] = aluno[i][3]
-				matrizAux[i][4] = aluno[i][4]
-				matrizAux[i][5] = aluno[i][5]
-				matrizAux[i][6] = aluno[i][6]
-				matrizAux[i][7] = aluno[i][7]
-
-				aluno[i][0] = aluno[i+1][0]
-				aluno[i][1] = aluno[i+1][1]
-				aluno[i][2] = aluno[i+1][2]
-				aluno[i][3] = aluno[i+1][3]
-				aluno[i][4] = aluno[i+1][4]
-				aluno[i][5] = aluno[i+1][5]
-				aluno[i][6] = aluno[i+1][6]
-				aluno[i][7] = aluno[i+1][7]
-
-				aluno[i+1][0] = matrizAux[i][0]
-				aluno[i+1][1] = matrizAux[i][1]
-				aluno[i+1][2] = matrizAux[i][2]
-				aluno[i+1][3] = matrizAux[i][3]
-				aluno[i+1][4] = matrizAux[i][4]
-				aluno[i+1][5] = matrizAux[i][5]
-				aluno[i+1][6] = matrizAux[i][6]
-				aluno[i+1][7] = matrizAux[i][7]
-			} senao {
-				retorne
-			}
-		}
 	}
 	
 	funcao cadastroAluno(cadeia aluno[][])
@@ -73,6 +30,8 @@ programa
 		
 		para(inteiro i=0; i < LINHA; i++)
 		{	
+			se(aluno[i][0] == "")
+			{
 			escreva("\nCadastro de aluno: ")
 			escreva("\n------------------------")
 			escreva("\nNome: ")
@@ -140,6 +99,62 @@ programa
 					pare
 				}
 	     	}
+	     	}
+		}
+	}
+
+	funcao organizadorPorMediaCrescente(cadeia aluno[][]){
+		real mediaReal1 = 0.0, mediaReal2 = 0.0
+		cadeia matrizAux[LINHA][COLUNA]
+
+
+		enquanto(verdadeiro)
+		{
+			logico houveTroca = falso
+			para(inteiro i = 0; i < LINHA; i++){
+				mediaReal1 = t.cadeia_para_real(aluno[i][6])
+				se(aluno[i+1][6] != ""){
+					mediaReal2 = t.cadeia_para_real(aluno[i+1][6])
+				} senao {
+					pare
+				}
+	
+				se(mediaReal1 < mediaReal2){
+					houveTroca = verdadeiro
+					matrizAux[i][0] = aluno[i][0]
+					matrizAux[i][1] = aluno[i][1]
+					matrizAux[i][2] = aluno[i][2]
+					matrizAux[i][3] = aluno[i][3]
+					matrizAux[i][4] = aluno[i][4]
+					matrizAux[i][5] = aluno[i][5]
+					matrizAux[i][6] = aluno[i][6]
+					matrizAux[i][7] = aluno[i][7]
+	
+					aluno[i][0] = aluno[i+1][0]
+					aluno[i][1] = aluno[i+1][1]
+					aluno[i][2] = aluno[i+1][2]
+					aluno[i][3] = aluno[i+1][3]
+					aluno[i][4] = aluno[i+1][4]
+					aluno[i][5] = aluno[i+1][5]
+					aluno[i][6] = aluno[i+1][6]
+					aluno[i][7] = aluno[i+1][7]
+	
+					aluno[i+1][0] = matrizAux[i][0]
+					aluno[i+1][1] = matrizAux[i][1]
+					aluno[i+1][2] = matrizAux[i][2]
+					aluno[i+1][3] = matrizAux[i][3]
+					aluno[i+1][4] = matrizAux[i][4]
+					aluno[i+1][5] = matrizAux[i][5]
+					aluno[i+1][6] = matrizAux[i][6]
+					aluno[i+1][7] = matrizAux[i][7]
+				} senao {
+					pare
+				}
+			}
+			se(nao houveTroca)
+			{
+				retorne
+			}
 		}
 	}
 
@@ -196,6 +211,77 @@ programa
 			}
 		}
 	}
+
+	funcao editarAlunos(cadeia aluno[][])
+	{	
+		cadeia nome, mesNascimento, turma, nota1, nota2, nota3, mediaFinal,nomeAluno
+		real nota1real,nota2real,nota3real,media
+		inteiro numeroErrado = 0
+		
+		escreva("Qual o nome do aluno que deseja editar: ")
+		leia(nomeAluno)
+
+		para(inteiro i = 0; i < LINHA; i++)
+		{
+			se(aluno[i][0] == nomeAluno)
+			{
+			escreva("\nEditar cadastro do aluno: ")
+			escreva("\n------------------------")
+			escreva("\nNome: ")
+			leia(nome)
+			escreva("\nMês de Nascimento: ")
+			leia(mesNascimento)
+			escreva("\nTurma: ")
+			leia(turma)
+
+			numeroErrado = 0
+			faca{
+				
+				escreva("\nNota 1: ")
+				leia(nota1)
+				escreva("\nNota 2: ")
+				leia(nota2)
+				escreva("\nNota 3: ")
+				leia(nota3)
+
+				numeroErrado++
+				se(numeroErrado > 0){
+					limpa()
+					escreva("\n------------------------")
+					escreva("\nAlgo deu errado, notas inseridas inválidas!\nTente novamente!\n")
+					escreva("------------------------")
+				}
+				
+				
+				
+				nota1real = t.cadeia_para_real(nota1)
+				nota2real = t.cadeia_para_real(nota2)
+				nota3real = t.cadeia_para_real(nota3)
+			}enquanto(nota1real > 10 ou nota1real < 0 ou nota2real > 10 ou nota2real < 0 ou nota3real > 10 ou nota3real < 0)
+			
+			aluno[i][0] = nome
+			aluno[i][1] = mesNascimento
+			aluno[i][2] = turma
+			aluno[i][3] = nota1
+			aluno[i][4] = nota2
+			aluno[i][5] = nota3
+	
+			media = (nota1real + nota2real + nota3real) / 3
+			media = m.arredondar(media,1)
+			mediaFinal = t.real_para_cadeia(media)
+			aluno[i][6] = mediaFinal
+
+			se(media < 6)
+			{
+				aluno[i][7] = "Reprovado"
+			} 
+			senao se(media >= 6)
+			{
+				aluno[i][7] = "Aprovado"
+			}
+			}
+		}limpa()
+	}	
 	
 	funcao exibirAlunos(cadeia aluno[][])
 	{	
@@ -251,6 +337,16 @@ programa
 
 			caso 5:
 			limpa()
+			editarAlunos(alunos)
+			pare
+
+			caso 6:
+			limpa()
+			
+			pare
+			
+			caso 7:
+			limpa()
 			rodandoprograma = falso
 			pare
 
@@ -268,10 +364,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2714; 
- * @DOBRAMENTO-CODIGO = [8, 21, 145, 199];
+ * @POSICAO-CURSOR = 7412; 
+ * @DOBRAMENTO-CODIGO = [8, 23, 105, 160, 194, 214, 285];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {aluno, 67, 29, 5}-{alunos, 220, 9, 6};
+ * @SIMBOLOS-INSPECIONADOS = {aluno, 106, 44, 5}-{alunos, 164, 18, 6};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
